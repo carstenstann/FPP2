@@ -1,2 +1,2 @@
-# FPP2
-Solutions to exercises in Forecasting Principles and Practice
+# Forecasting: Principles and Practice - Rob Hyndman
+Code and solutions to exercises.
