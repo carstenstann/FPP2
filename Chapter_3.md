@@ -18,7 +18,7 @@ cbind(raw = usnetelec, transform = BoxCox(usnetelec, lambda)) %>%
    ggtitle("Annual US Net Electricity Generation")
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_1-1.png)
+![](Figures/Ch3/Ch3-Exercise_1-1.png)
 
 ``` r
 lambda <- BoxCox.lambda(usgdp)
@@ -27,7 +27,7 @@ cbind(raw = usgdp, transform = BoxCox(usgdp, lambda)) %>%
    ggtitle("Quarterly US GDP")
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_1-2.png)
+![](Figures/Ch3/Ch3-Exercise_1-2.png)
 
 ``` r
 lambda <- BoxCox.lambda(mcopper)
@@ -36,7 +36,7 @@ cbind(raw = mcopper, transform = BoxCox(mcopper, lambda)) %>%
    ggtitle("Monthly Copper Prices")
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_1-3.png)
+![](Figures/Ch3/Ch3-Exercise_1-3.png)
 
 ``` r
 lambda <- BoxCox.lambda(enplanements)
@@ -45,7 +45,7 @@ cbind(raw = enplanements, transform = BoxCox(enplanements, lambda)) %>%
    ggtitle("Monthly US domestic enplanements")
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_1-4.png)
+![](Figures/Ch3/Ch3-Exercise_1-4.png)
 
 ### Exercise 2
 
@@ -60,7 +60,7 @@ cbind(raw = cangas, transform = BoxCox(cangas, lambda)) %>%
    ggtitle("Monthly Canadian Gas Production")
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_2-1.png)
+![](Figures/Ch3/Ch3-Exercise_2-1.png)
 
 ### Exercise 3
 
@@ -69,14 +69,14 @@ What Box-Cox transformation would you select for your retail data (from Exercise
 -   A lambda of .1276 transforms the seasonality nicely.
 
 ``` r
-retaildata <- readxl::read_excel("retail.xlsx", skip = 1)
+retaildata <- readxl::read_excel("Data/retail.xlsx", skip = 1)
 myts <- ts(retaildata[,"A3349873A"], frequency = 12, start = c(1982, 4))
 lambda <- BoxCox.lambda(myts)
 cbind(raw = myts, transform = BoxCox(myts, lambda)) %>% 
    autoplot(facets = TRUE)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_3-1.png)
+![](Figures/Ch3/Ch3-Exercise_3-1.png)
 
 ### Exercise 4
 
@@ -90,7 +90,7 @@ For each of the following series, make a graph of the data. If transforming seem
 autoplot(dole)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_4-1.png)
+![](Figures/Ch3/Ch3-Exercise_4-1.png)
 
 ``` r
 lambda <- BoxCox.lambda(dole)
@@ -98,19 +98,19 @@ cbind(raw = dole, transform = BoxCox(dole, lambda)) %>%
    autoplot(facets = TRUE)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_4-2.png)
+![](Figures/Ch3/Ch3-Exercise_4-2.png)
 
 ``` r
 autoplot(usdeaths)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_4-3.png)
+![](Figures/Ch3/Ch3-Exercise_4-3.png)
 
 ``` r
 autoplot(bricksq)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_4-4.png)
+![](Figures/Ch3/Ch3-Exercise_4-4.png)
 
 ### Exercise 5
 
@@ -124,7 +124,7 @@ fc <- snaive(beer)
 checkresiduals(fc)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_5-1.png)
+![](Figures/Ch3/Ch3-Exercise_5-1.png)
 
     ## 
     ##  Ljung-Box test
@@ -164,7 +164,7 @@ checkresiduals(fc2)
 ## Model df: 0.   Total lags used: 10
 ```
 
-<img src="README_figs/README/Ch3/Ch3-Exercise_6a-1.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_6a-2.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_6a-3.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_6a-4.png" width="50%" />
+<img src="Figures/Ch3/Ch3-Exercise_6a-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_6a-2.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_6a-3.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_6a-4.png" width="50%" />
 
 Similarly, for `bricksq` both the `naive` and `snaive` forecast methods result in residuals the are autocorrelated and non-normally distributed. The Ljung-Box test rejects non-autocorrelated residuals for both methods.
 
@@ -194,7 +194,7 @@ checkresiduals(fc2)
 ## Model df: 0.   Total lags used: 8
 ```
 
-<img src="README_figs/README/Ch3/Ch3-Exercise_6b-1.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_6b-2.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_6b-3.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_6b-4.png" width="50%" />
+<img src="Figures/Ch3/Ch3-Exercise_6b-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_6b-2.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_6b-3.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_6b-4.png" width="50%" />
 
 ### Exercise 7
 
@@ -227,7 +227,7 @@ For your retail time series (from Exercise 3 in Section 2.10):
 -   Split the data into two parts using:
 
 ``` r
-retaildata <- readxl::read_excel("retail.xlsx", skip = 1)
+retaildata <- readxl::read_excel("Data/retail.xlsx", skip = 1)
 myts <- ts(retaildata[,"A3349873A"], frequency = 12, start = c(1982, 4))
 myts.train <- window(myts, end = c(2010,12))
 myts.test <- window(myts, start = 2011)
@@ -241,7 +241,7 @@ autoplot(myts) +
   autolayer(myts.test, series = "Test")
 ```
 
-![](README_figs/README/Ch3/Ch3-unnamed-chunk-3-1.png)
+![](Figures/Ch3/Ch3-unnamed-chunk-3-1.png)
 
 -   Calculate forecasts using snaive applied to myts.train.
 
@@ -267,7 +267,7 @@ accuracy(fc,myts.test)
 checkresiduals(fc)
 ```
 
-![](README_figs/README/Ch3/Ch3-unnamed-chunk-6-1.png)
+![](Figures/Ch3/Ch3-unnamed-chunk-6-1.png)
 
     ## 
     ##  Ljung-Box test
@@ -341,7 +341,7 @@ Use the Dow Jones index (data set dowjones) to do the following:
 autoplot(dowjones)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_10a-1.png)
+![](Figures/Ch3/Ch3-Exercise_10a-1.png)
 
 1.  Produce forecasts using the drift method and plot them.
 
@@ -350,7 +350,7 @@ fc <- rwf(dowjones, drift = TRUE, h = 10)
 autoplot(fc)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_10b-1.png)
+![](Figures/Ch3/Ch3-Exercise_10b-1.png)
 
 -   Show that the forecasts are identical to extending the line drawn between the first and last observations.
 
@@ -365,7 +365,7 @@ autoplot(dowjones) +
    autolayer(rwf(dowjones, drift = TRUE), PI = FALSE)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_10c-1.png)
+![](Figures/Ch3/Ch3-Exercise_10c-1.png)
 
 -   Try using some of the other benchmark functions to forecast the same data set. Which do you think is best? Why?
 
@@ -384,7 +384,7 @@ autoplot(dowjones) +
   guides(colour=guide_legend(title="Forecast"))
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_10d-1.png)
+![](Figures/Ch3/Ch3-Exercise_10d-1.png)
 
 ### Exercise 11
 
@@ -396,13 +396,13 @@ Consider the daily closing IBM stock prices (data set `ibmclose`).
 autoplot(ibmclose)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_11a-1.png)
+![](Figures/Ch3/Ch3-Exercise_11a-1.png)
 
 ``` r
 autoplot(diff(ibmclose))
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_11a-2.png)
+![](Figures/Ch3/Ch3-Exercise_11a-2.png)
 
 -   Split the data into a training set of 300 observations and a test set of 69 observations.
 
@@ -426,7 +426,7 @@ autoplot(ibmclose) +
    autolayer(fc_rwf, series = "drift", PI = FALSE)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exercise_11c-1.png)
+![](Figures/Ch3/Ch3-Exercise_11c-1.png)
 
 ``` r
 accuracy(fc_naive, test)
@@ -483,7 +483,7 @@ checkresiduals(fc_rwf)
 ## Model df: 1.   Total lags used: 10
 ```
 
-<img src="README_figs/README/Ch3/Ch3-Exercise_11d-1.png" width="33.3%" /><img src="README_figs/README/Ch3/Ch3-Exercise_11d-2.png" width="33.3%" /><img src="README_figs/README/Ch3/Ch3-Exercise_11d-3.png" width="33.3%" />
+<img src="Figures/Ch3/Ch3-Exercise_11d-1.png" width="33.3%" /><img src="Figures/Ch3/Ch3-Exercise_11d-2.png" width="33.3%" /><img src="Figures/Ch3/Ch3-Exercise_11d-3.png" width="33.3%" />
 
 ### Exercise 12
 
@@ -498,7 +498,7 @@ ggseasonplot(hsales)
 ggsubseriesplot(hsales)
 ```
 
-<img src="README_figs/README/Ch3/Ch3-Exercise_12a-1.png" width="33.3%" /><img src="README_figs/README/Ch3/Ch3-Exercise_12a-2.png" width="33.3%" /><img src="README_figs/README/Ch3/Ch3-Exercise_12a-3.png" width="33.3%" />
+<img src="Figures/Ch3/Ch3-Exercise_12a-1.png" width="33.3%" /><img src="Figures/Ch3/Ch3-Exercise_12a-2.png" width="33.3%" /><img src="Figures/Ch3/Ch3-Exercise_12a-3.png" width="33.3%" />
 
 -   Split the hsales data set into a training set and a test set, where the test set is the last two years of data.
 
@@ -523,7 +523,7 @@ autoplot(hsales) +
    autolayer(fc_rwf, series = "drift", PI = FALSE)
 ```
 
-![](README_figs/README/Ch3/Ch3-Exericse_12c-1.png)
+![](Figures/Ch3/Ch3-Exericse_12c-1.png)
 
 ``` r
 accuracy(fc_mean, test)
@@ -595,4 +595,4 @@ checkresiduals(fc_rwf)
 ## Model df: 1.   Total lags used: 24
 ```
 
-<img src="README_figs/README/Ch3/Ch3-Exercise_12d-1.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_12d-2.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_12d-3.png" width="50%" /><img src="README_figs/README/Ch3/Ch3-Exercise_12d-4.png" width="50%" />
+<img src="Figures/Ch3/Ch3-Exercise_12d-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_12d-2.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_12d-3.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_12d-4.png" width="50%" />

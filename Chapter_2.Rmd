@@ -1,0 +1,108 @@
+---
+Title: Chapter 2 Exericses - FPP2
+output: rmarkdown::github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, fig.width = 6, fig.height = 4 , fig.path = "Figures/Ch2/Ch2-")
+library(forecast)
+library(fpp2)
+```
+
+### Exercise 1
+```{r, Exercise_1, out.width='33.3%', fig.show = 'hold'}
+autoplot(gold)
+autoplot(woolyrnq)
+autoplot(gas)
+frequency(gold)
+frequency(woolyrnq)
+frequency(gas)
+which.max(gold)
+```
+
+### Exercise 2
+```{r, Exercise_2}
+tute1 <- read.csv("Data/tute1.csv")
+mytimeseries <- ts(tute1[,-1], start = 1981, frequency = 4)
+autoplot(mytimeseries, facets = T)
+```
+
+### Exercise 3
+```{r, Exercise_3}
+retaildata <- readxl::read_excel("Data/retail.xlsx", skip = 1)
+myts <- ts(retaildata[,"A3349873A"], frequency = 12, start = c(1982, 4))
+myts
+```
+
+### Exercise 4
+```{r, Exercise_4}
+autoplot(bicoal) + ggtitle("Annual bituminous coal production")
+autoplot(chicken) + ggtitle("Price of chicken in US\n(constant dollars): 1924–1993")
+autoplot(dole) + ggtitle("Monthly total of people on unemployment benefits in Australia")
+autoplot(usdeaths) + ggtitle("Monthly accidental deaths in USA.")
+autoplot(lynx)
+autoplot(goog) + ggtitle("Daily closing stock prices of Google Inc")
+autoplot(fancy) + ggtitle("Monthly sales for a souvenir shop")
+autoplot(a10) + ggtitle("Monthly anti-diabetic drug sales in Australia")
+autoplot(h02) + ggtitle("Australian Monthly corticosteroid drug sales")
+```
+
+### Exercise 5
+```{r, Exercise_5}
+ggseasonplot(writing)
+ggsubseriesplot(writing)
+```
+
+### Exercise 6
+```{r, Exercise_6a, out.width='33.3%', fig.show='hold'}
+autoplot(hsales)
+ggseasonplot(hsales)
+ggsubseriesplot(hsales)
+```
+
+```{r, Exercise_6b, out.width='33.3%', fig.show='hold'}
+autoplot(usdeaths)
+ggseasonplot(usdeaths)
+ggsubseriesplot(usdeaths)
+```
+
+```{r, Exercise_6c, out.width='33.3%', fig.show='hold'}
+autoplot(bricksq)
+ggseasonplot(bricksq)
+ggsubseriesplot(bricksq)
+```
+
+### Exercise 7
+```{r, Exercise_7, out.width='33.3%', fig.show='hold'}
+autoplot(arrivals, facets = T)
+ggseasonplot(arrivals[,3])
+```
+
+### Exercise 8
+   * 1: B
+   * 2: A
+   * 3: D
+   * 4: C
+
+### Exercise 9
+```{r, Exercise_9, out.width='33.3%', fig.show='hold' }
+mypigs <- window(pigs, start = 1990)
+frequency(pigs)
+autoplot(mypigs)
+ggseasonplot(mypigs)
+ggsubseriesplot(mypigs)
+```
+```{r, Exercise_9b, out.width='50%', fig.show='hold'}
+ggAcf(mypigs)
+ggPacf(mypigs)
+```
+
+### Exercise 10
+```{r, Exercise_10, out.width='50%', fig.show='hold'}
+autoplot(dj)
+ggAcf(dj)
+autoplot(diff(dj))
+ggAcf(diff(dj))
+```
