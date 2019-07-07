@@ -16,36 +16,24 @@ lambda <- BoxCox.lambda(usnetelec)
 cbind(raw = usnetelec, transform = BoxCox(usnetelec, lambda)) %>% 
    autoplot(facets = TRUE) +
    ggtitle("Annual US Net Electricity Generation")
-```
 
-![](Figures/Ch3/Ch3-Exercise_1-1.png)
-
-``` r
 lambda <- BoxCox.lambda(usgdp)
 cbind(raw = usgdp, transform = BoxCox(usgdp, lambda)) %>% 
    autoplot(facets = TRUE) +
    ggtitle("Quarterly US GDP")
-```
 
-![](Figures/Ch3/Ch3-Exercise_1-2.png)
-
-``` r
 lambda <- BoxCox.lambda(mcopper)
 cbind(raw = mcopper, transform = BoxCox(mcopper, lambda)) %>% 
    autoplot(facets = TRUE) + 
    ggtitle("Monthly Copper Prices")
-```
 
-![](Figures/Ch3/Ch3-Exercise_1-3.png)
-
-``` r
 lambda <- BoxCox.lambda(enplanements)
 cbind(raw = enplanements, transform = BoxCox(enplanements, lambda)) %>% 
    autoplot(facets = TRUE) +
    ggtitle("Monthly US domestic enplanements")
 ```
 
-![](Figures/Ch3/Ch3-Exercise_1-4.png)
+<img src="Figures/Ch3/Ch3-Exercise_1-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_1-2.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_1-3.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_1-4.png" width="50%" />
 
 ### Exercise 2
 

@@ -21,19 +21,22 @@ For the following series, find an appropriate Box-Cox transformation in order to
    * `mcopper`
    * `enplanements`
    
-```{r, Exercise_1}
+```{r, Exercise_1, out.width ='50%', fig.show='hold'}
 lambda <- BoxCox.lambda(usnetelec)
 cbind(raw = usnetelec, transform = BoxCox(usnetelec, lambda)) %>% 
    autoplot(facets = TRUE) +
    ggtitle("Annual US Net Electricity Generation")
+
 lambda <- BoxCox.lambda(usgdp)
 cbind(raw = usgdp, transform = BoxCox(usgdp, lambda)) %>% 
    autoplot(facets = TRUE) +
    ggtitle("Quarterly US GDP")
+
 lambda <- BoxCox.lambda(mcopper)
 cbind(raw = mcopper, transform = BoxCox(mcopper, lambda)) %>% 
    autoplot(facets = TRUE) + 
    ggtitle("Monthly Copper Prices")
+
 lambda <- BoxCox.lambda(enplanements)
 cbind(raw = enplanements, transform = BoxCox(enplanements, lambda)) %>% 
    autoplot(facets = TRUE) +
