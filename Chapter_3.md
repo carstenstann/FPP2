@@ -76,29 +76,14 @@ For each of the following series, make a graph of the data. If transforming seem
 
 ``` r
 autoplot(dole)
-```
-
-![](Figures/Ch3/Ch3-Exercise_4-1.png)
-
-``` r
 lambda <- BoxCox.lambda(dole)
 cbind(raw = dole, transform = BoxCox(dole, lambda)) %>% 
    autoplot(facets = TRUE)
-```
-
-![](Figures/Ch3/Ch3-Exercise_4-2.png)
-
-``` r
 autoplot(usdeaths)
-```
-
-![](Figures/Ch3/Ch3-Exercise_4-3.png)
-
-``` r
 autoplot(bricksq)
 ```
 
-![](Figures/Ch3/Ch3-Exercise_4-4.png)
+<img src="Figures/Ch3/Ch3-Exercise_4-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_4-2.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_4-3.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_4-4.png" width="50%" />
 
 ### Exercise 5
 
@@ -331,18 +316,13 @@ autoplot(dowjones)
 
 ![](Figures/Ch3/Ch3-Exercise_10a-1.png)
 
-1.  Produce forecasts using the drift method and plot them.
+-   Produce forecasts using the drift method and plot them.
+-   Show that the forecasts are identical to extending the line drawn between the first and last observations.
 
 ``` r
 fc <- rwf(dowjones, drift = TRUE, h = 10)
 autoplot(fc)
-```
 
-![](Figures/Ch3/Ch3-Exercise_10b-1.png)
-
--   Show that the forecasts are identical to extending the line drawn between the first and last observations.
-
-``` r
 first <- dowjones[1]
 last<- dowjones[length(dowjones)]
 slope <- (last - first)/(length(dowjones) - 1)
@@ -353,11 +333,11 @@ autoplot(dowjones) +
    autolayer(rwf(dowjones, drift = TRUE), PI = FALSE)
 ```
 
-![](Figures/Ch3/Ch3-Exercise_10c-1.png)
+<img src="Figures/Ch3/Ch3-Exercise_10b-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_10b-2.png" width="50%" />
 
 -   Try using some of the other benchmark functions to forecast the same data set. Which do you think is best? Why?
 
-         * The naïve method seems to produce the best forecasts. The mean forecasts is simply too far off from the recent actuals to be reasonable. The drift method seems to aggresive. 
+    -   The naive method seems to produce the best forecasts. The mean forecasts is simply too far off from the recent actuals to be reasonable. The drift method seems to aggresive.
 
 ``` r
 autoplot(dowjones) +
@@ -372,7 +352,7 @@ autoplot(dowjones) +
   guides(colour=guide_legend(title="Forecast"))
 ```
 
-![](Figures/Ch3/Ch3-Exercise_10d-1.png)
+![](Figures/Ch3/Ch3-Exercise_10c-1.png)
 
 ### Exercise 11
 
@@ -382,15 +362,10 @@ Consider the daily closing IBM stock prices (data set `ibmclose`).
 
 ``` r
 autoplot(ibmclose)
-```
-
-![](Figures/Ch3/Ch3-Exercise_11a-1.png)
-
-``` r
 autoplot(diff(ibmclose))
 ```
 
-![](Figures/Ch3/Ch3-Exercise_11a-2.png)
+<img src="Figures/Ch3/Ch3-Exercise_11a-1.png" width="50%" /><img src="Figures/Ch3/Ch3-Exercise_11a-2.png" width="50%" />
 
 -   Split the data into a training set of 300 observations and a test set of 69 observations.
 

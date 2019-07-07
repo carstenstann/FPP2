@@ -77,7 +77,7 @@ For each of the following series, make a graph of the data. If transforming seem
    * `usdeaths`: no transformation applied (transformation appears meaningless)
    * `bricksq`: no transformation applied (transformation appears meaningless)
 
-```{r, Exercise_4}
+```{r, Exercise_4, out.width='50%', fig.show='hold'}
 autoplot(dole)
 lambda <- BoxCox.lambda(dole)
 cbind(raw = dole, transform = BoxCox(dole, lambda)) %>% 
@@ -233,18 +233,17 @@ Use the Dow Jones index (data set dowjones) to do the following:
 autoplot(dowjones)
 ```
    
-   b. Produce forecasts using the drift method and plot them.
-```{r, Exercise_10b}
+   * Produce forecasts using the drift method and plot them.
+   * Show that the forecasts are identical to extending the line drawn between the first and last observations.
+   
+```{r, Exercise_10b, out.width='50%', fig.show='hold'}
 fc <- rwf(dowjones, drift = TRUE, h = 10)
 autoplot(fc)
-```
-  
-   * Show that the forecasts are identical to extending the line drawn between the first and last observations.
-```{r, Exercise_10c}
+
 first <- dowjones[1]
 last<- dowjones[length(dowjones)]
-slope <- (last - first)/(length(dowjones) - 1)
-slope
+slope <- (last - first) / (length(dowjones) - 1)
+
 autoplot(dowjones) +
    geom_abline(slope = slope, intercept = first-slope, colour = "red", alpha = 0.8) +
    autolayer(rwf(dowjones, drift = TRUE), PI = FALSE)
@@ -252,8 +251,9 @@ autoplot(dowjones) +
    
    * Try using some of the other benchmark functions to forecast the same data set. Which do you think is best? Why?
       
-         * The naïve method seems to produce the best forecasts. The mean forecasts is simply too far off from the recent actuals to be reasonable. The drift method seems to aggresive. 
-```{r, Exercise_10d}
+      * The naive method seems to produce the best forecasts. The mean forecasts is simply too far off from the recent actuals to be reasonable. The drift method seems to aggresive. 
+         
+```{r, Exercise_10c}
 autoplot(dowjones) +
   autolayer(meanf(dowjones, h = 10),
     series = "Mean", PI = FALSE) +
@@ -272,7 +272,7 @@ autoplot(dowjones) +
 Consider the daily closing IBM stock prices (data set `ibmclose`).
 
    * Produce some plots of the data in order to become familiar with it.
-```{r, Exercise_11a}
+```{r, Exercise_11a, out.width='50%', fig.show='hold'}
 autoplot(ibmclose)
 autoplot(diff(ibmclose))
 ```
