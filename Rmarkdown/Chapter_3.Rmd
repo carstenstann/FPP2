@@ -59,7 +59,7 @@ What Box-Cox transformation would you select for your retail data (from Exercise
    * A lambda of .1276 transforms the seasonality nicely.
    
 ```{r, Exercise_3}
-retaildata <- readxl::read_excel("retail.xlsx", skip = 1)
+retaildata <- readxl::read_excel("Data/retail.xlsx", skip = 1)
 myts <- ts(retaildata[,"A3349873A"], frequency = 12, start = c(1982, 4))
 lambda <- BoxCox.lambda(myts)
 cbind(raw = myts, transform = BoxCox(myts, lambda)) %>% 
@@ -156,7 +156,7 @@ For your retail time series (from Exercise 3 in Section 2.10):
    * Split the data into two parts using:
    
 ```{r}
-retaildata <- readxl::read_excel("retail.xlsx", skip = 1)
+retaildata <- readxl::read_excel("Data/retail.xlsx", skip = 1)
 myts <- ts(retaildata[,"A3349873A"], frequency = 12, start = c(1982, 4))
 myts.train <- window(myts, end = c(2010,12))
 myts.test <- window(myts, start = 2011)
